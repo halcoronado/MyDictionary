@@ -1,6 +1,9 @@
 # 1) print out the value for the key 'history' using the dictionary below
 
 
+from random import sample
+
+
 sampleDict = { 
    "class":{ 
       "student":{ 
@@ -14,7 +17,8 @@ sampleDict = {
 }
 
 
-
+#for x in sampleDict['class']:
+   
 
 # 2) Add 2 inches to the son's height.
 
