@@ -47,3 +47,8 @@ datastore = { "medical":[
 
       ]
 }
+
+
+#print(datastore["medical"][1])
+for x in datastore["medical"][1]:
+  print(x)
