@@ -1,43 +1,39 @@
-###The first line in the file is the name of the team that won in 1903,
-# and the last line is the name of the team that won in 2009. 
-##(Note the World Series was not played in 1904 or 1994. There are entries in the file indicating this.) 
-##Write a program that reads this file and creates a dictionary in which the keys are the names of the teams, 
-##and each key’s associated value is the number of times the team has won the World Series. 
 
 infile = open("WorldSeriesWinners.txt",'r')
-''''
+
 winners = []
-count = 1
+
 for x in infile:
     x = x.rstrip('\n')
-    if x not in winners:
-        winners+=[x,count]
+    winners.append(x)
+wincount={}
+for x in winners:
+    counter = winners.count(x)
+    wincount[x]= counter
+
+for key in list(wincount.keys()):
+    print(key, ":",wincount[key], sep = '')
+
+yearlist = []
+win_years= {}
+for x in range (1903,2009):
+    if x == 1904:
+        continue
+    elif x == 1994:
+        continue
     else:
-        count +=1 
-        
-        
-print (winners)
-'''
-#Create another dictionary in which the keys are the years, 
-# and each key’s associated value is the name of the team that won that year.
-##The program should prompt the user for a year in the range of 1903 through 2009. 
-##It should then display the name of the team that won the World Series that year, 
-# and the number of times that team has won the World Series.
+        yearlist.append(x)
 
-def main():
-    win_yrs = {}
-    line = infile.readline().rstrip('\n')
+for key in yearlist:
+    for value in winners:
+        win_years[key] = value
+        winners.remove(value)
+        break  
+for key in list(win_years.keys()):
+ print(key, ":",win_years[key], sep = '')
 
-    make_dict()
-    year = int(input('enter a year bro'))
-
-def make_dict(win_yrs):
-    
-    for x in range (1903,2008):
-        if x != 1904 or x != 1994:
-            win_yrs[x]= line
-            print(win_yrs)
-    return 
-
-    
-main()
+quest = int(input('Enter year from 1903-2008: '))
+if quest in win_years:
+    print(win_years[quest])
+else:
+    print('No record of World Series')
