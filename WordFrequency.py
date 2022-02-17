@@ -4,17 +4,26 @@
 ##The program should display the frequency of each word.
 
 infile = open('AI.txt','r')
-SC = [ ',' , '.' , '”' , '’' , '"' , "'"  , '?' , '!' , '&', '@', '*' , '#' ]
+SC = [ ',' , '.' , '”' , '’' , '"' , "'"  , '?' , '!' , '&', '@', '*' , '#', ')','(', '%' ]
 SC=str(SC)
-
-words = ''
-for x in infile:
-  words += ' ' 
-  words += infile.read()
+words = infile.readline()
 words = words.lower()
 for x in SC:
-  words = words.replace(x,'')
-print (words)
+  words = words.replace(x,' ')
+words = words.split()
+
+wordlist = []
+for i in words:
+  wordlist.append(i)
   
+
+word_dict= {}
+for n in wordlist:
+  counter = wordlist.count(n)
+  word_dict[n] = {counter}
+
+for key in list(word_dict.keys()):
+  print(key, ":",word_dict[key], sep = '')
+
 
 infile.close()
